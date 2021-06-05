@@ -1,0 +1,19 @@
+<div class="form-widget">
+    {% if field.value != null %}
+        {% set address = field.value %}
+        <p>
+            {{ constant('App\\Entity\\Address::TYPE')[address.type] }} <br>
+            {% if address.type is same as 0 %}
+                {{ constant('App\\Entity\\Address::CIVILITY')[address.civility] }} {{ address.firstname }} {{ address.lastname }}<br>
+            {% else %}
+                Raison sociale : {{ address.socialReason }} <br>
+                SIRET/SIREN : {{ address.siren }} <br>
+            {% endif %}
+            {{ address.street }},<br>
+            {{ address.postalCode|number_format(0, '', ' ') }}, {{ address.city }},<br>
+            {{ address.countryCode }}
+        </p>
+    {% else %}
+        Non spécifiée
+    {% endif %}
+</div>

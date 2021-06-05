@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Votre numéro de plaque' %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_rest(form) }}
+        <a href="{{ path('eureka_g6k_calcul', {simu: 'cout-certificat-immatriculation'}) }}">Continuer sans numéro d'immatriculation</a>
+        <button type="submit">Continuer</button>
+    {{ form_end(form) }}
+{% endblock %}

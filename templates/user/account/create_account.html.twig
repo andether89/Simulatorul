@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title 'Créer un compte' %}
+
+{% block body %}
+    <h1>Créer mon compte</h1>
+    {{ form_start(form) }}
+        {{ form_rest(form) }}
+        <button type="submit">Créer mon compte</button>
+    {{ form_end(form) }}
+{% endblock %}

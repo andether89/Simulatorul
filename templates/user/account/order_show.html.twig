@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Ma commande' %}
+
+{% block javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <h1>Ma commande {{ order.number }}</h1>
+
+
+        <div class="container">
+            {% set process = order.process %}
+
+            <p>
+                <span class="text-primary">
+                    Démarche :<br>
+                </span>
+                {{ process.processType }}
+            </p>
+            {% if process.purchasePlace is not null %}
+                <p>
+                    <span class="text-primary">
+                        Lieu d'achat :<br>
+                    </span>
+                    {{ process.purchasePlace }}
+                </p>
+            {% endif %}
+            {% if process.fourthChangeHome is not null %}
+                <p>
+                    <span class="text-primary">
+                        Quatrième changement de domicile :<br>
+                    </span>
+                    {{ process.fourthChangeHome }}
+                </p>
+            {% endif %}
+            {% if process.vehicleModification is not null %}
+                <p>
+                    <span class="text-primary">
+                        Modification du véhicule :<br>
+                    </span>
+                    {{ process.vehicleModification }}
+                </p>
+            {% endif %}
+            {% if process.vehicleType is not null %}
+                <p>
+                    <span class="text-primary">
+                        Type de véhicule :<br>
+                    </span>
+                    {{ process.vehicleType }}
+                </p>
+            {% endif %}
+            {% if process.circulationDate is not null %}
+                <p>
+                    <span class="text-primary">
+                        Date de mise en circulation :<br>
+                    </span>
+                    {{ process.circulationDate }}
+                </p>
+            {% endif %}
+            {% if process.disability is not null %}
+                <p>
+                    <span class="text-primary">
+                        Invalidité :<br>
+                    </span>
+                    {{ process.disability }}
+                </p>
+            {% endif %}
+            {% if process.registrationType is not null %}
+                <p>
+                    <span class="text-primary">
+                        Type d'immatriculation :<br>
+                    </span>
+                    {{ process.registrationType }}
+                </p>
+            {% endif %}
+            {% if process.demonstrationVehicle is not null %}
+                <p>
+                    <span class="text-primary">
+                        Véhicule de démonstration :<br>
+                    </span>
+                    {{ process.demonstrationVehicle }}
+                </p>
+            {% endif %}
+            {% if process.administrativePower is not null  and process.administrativePower is not same as 0  %}
+                <p>
+                    <span class="text-primary">
+                        Puissance administrative :<br>
+                    </span>
+                    {{ process.administrativePower }} CV
+                </p>
+            {% endif %}
+            {% if process.collectionVehicle is not null %}
+                <p>
+                    <span class="text-primary">
+                        Véhicule de collection :<br>
+                    </span>
+                    {{ process.collectionVehicle }}
+                </p>
+            {% endif %}
+            {% if process.energy is not null %}
+                <p>
+                    <span class="text-primary">
+                        Énergie :<br>
+                    </span>
+                    {{ process.energy }}
+                </p>
+            {% endif %}
+            {% if process.department is not null and process.department is not same as 0 %}
+                <p>
+                    <span class="text-primary">
+                        Département :<br>
+                    </span>
+                    {{ process.department }}
+                </p>
+            {% endif %}
+        </div>
+
+        <p>Prix : {{ order.total }} €</p>
+        <p>Etat de la commande : {{ constant('App\\Entity\\Order::STATE')[order.state] }}</p>
+
+        {% if order.state is same as 0 %}
+            <button id="checkout-button" data-token="{{ csrf_token('pay-order' ~ order.id) }}">Payer</button>
+        {% endif %}
+        {% if difference['day'] < 15 and order.state < 4 and order.state > 0 %}
+            {% include 'user/account/_cancel_order.html.twig' %}
+        {% endif %}
+
+        {% if order.state is same as 1 %}
+            {{ form_start(form) }}
+            {{ form_rest(form) }}
+            <button type="submit">Envoyer mes documents</button>
+            {{ form_end(form) }}
+        {% endif %}
+
+        <script type="text/javascript">
+            // Create an instance of the Stripe object with your publishable API key
+            var stripe = Stripe('{{ app.request.server.get('STRIPE_CLIENT') }}');
+            var checkoutButton = document.getElementById('checkout-button');
+
+            checkoutButton.addEventListener('click', function() {
+                let token = checkoutButton.getAttribute('data-token');
+                // Create a new Checkout Session using the server-side endpoint you
+                // created in step 3.
+                fetch('{{ path('account_pay', {id: order.id}) }}', {
+                    method: 'POST',
+                    body: token
+                })
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(session) {
+                        return stripe.redirectToCheckout({ sessionId: session.id });
+                    })
+                    .then(function(result) {
+                        // If `redirectToCheckout` fails due to a browser or network
+                        // error, you should display the localized error message to your
+                        // customer using `error.message`.
+                        if (result.error) {
+                            alert(result.error.message);
+                        }
+                    })
+                    .catch(function(error) {
+                        console.error('Error:', error);
+                    });
+            });
+        </script>
+    </div>
+{% endblock %}

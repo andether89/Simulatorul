@@ -1,0 +1,18 @@
+<header>
+    <h1>Driveme.fr</h1>
+    <nav>
+        <ul>
+            {% if is_granted('ROLE_USER') %}
+                <li><a href="{{ path('account_index') }}">Mon compte</a></li>
+                <li><a href="{{ path('account_order') }}">Suivre mes commandes</a></li>
+                <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+            {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <li><a href="{{ path('eureka_g6k_admin') }}">Administration G6K</a></li>
+            {% endif %}
+            <li><a href="{{ path('eureka_g6k_calcul', {simu: 'cout-certificat-immatriculation'}) }}">Faire une demande de carte grise</a></li>
+        </ul>
+    </nav>
+</header>

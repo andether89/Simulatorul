@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Mon compte' %}
+{% set user = app.user %}
+{% block body %}
+    <h1>Mon compte</h1>
+    <h3>Mes informations personnelles :</h3>
+    <p>
+        {% if user.firstname is not null and user.lastname is not null %}
+            Nom : {{ user.firstname }} <br>
+            Prénom : {{ user.lastname }} <br>
+        {% elseif user.socialReason is not null and user.siren is not null %}
+            Raison sociale : {{ user.socialReason }} <br>
+            SIREN/SIRET : {{ user.siren }} <br>
+        {% endif %}
+        Email : {{ user.email }} <br>
+        Mot de passe : ********** <a href="{{ path('app_change_password') }}">Modifier le mot de passe</a>
+    </p>
+    <p>
+        {% include 'user/account/_delete_account.html.twig' %}
+    </p>
+{% endblock %}

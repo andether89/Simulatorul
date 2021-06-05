@@ -1,0 +1,3 @@
+{
+    "translations": {"fr":{"admin":{"Orders":"Commandes","Order":"Commande","Number":"Num\u00e9ro de commande","Priority":"Priorit\u00e9","User":"Utilisateur","State":"\u00c9tat","Payment Intent":"Intention de paiement Stripe","Created At":"Cr\u00e9\u00e9e le","Demarche":"D\u00e9marche","Refund Order":"Rembourser la commande","Cancel Order":"Annuler la commande","Shipping Address":"Adresse de livraison","Billing Address":"Adresse de facturation","Co Owners":"Co-propri\u00e9taires"}}}
+}

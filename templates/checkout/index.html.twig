@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Checkout' %}
+
+{% form_theme form 'Theme/checkout/_form_theme.html.twig' %}
+
+{% block body %}
+    <h1>Une super page de checkout ici</h1>
+    {{ form_start(form) }}
+        {{ form_row(form.shippingAddress) }}
+        {{ form_row(form.billingAddress) }}
+        {{ form_row(form.coOwners) }}
+        {{ form_rest(form) }}
+        <button type="submit">Confirmer ma commande</button>
+    {{ form_end(form) }}
+
+    <script type="text/javascript">
+        let addButton = document.querySelector('.add-item-link');
+        let coOwnerList = document.querySelector(addButton.getAttribute('data-collection-holder-class'));
+        let coOwnerPrototype = coOwnerList.getAttribute('data-prototype').valueOf();
+
+        addButton.addEventListener('click', () => {
+            let counter = coOwnerList.getAttribute('data-widget-counter').valueOf();
+            counter++;
+            let newCoOwner = document.createElement('div');
+            coOwnerPrototype.replaceAll('__name__', counter);
+            newCoOwner.innerHTML = coOwnerPrototype;
+            coOwnerList.setAttribute('data-widget-counter', counter);
+            coOwnerList.append(newCoOwner);
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,1008 @@
+@charset "UTF-8";
+
+/*********************************************************
+ *                                                       *
+ * Définition des styles du simulateur (partie centrale) *
+ *                                                       *
+ *********************************************************/
+@media (min-width: 60em) {
+	.col-main {
+		float: left;
+		margin-left: 17.0387%;
+		margin-right: 2.232%;
+		width: 65.9227%;
+	}
+}
+.step-container {
+	padding: 1em 0 5em;
+	margin-bottom: 1.5em;
+	background: #fff;
+}
+@media (max-width: 37em) {
+	.step-container {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+}
+.field-container {
+	margin: 0 0.5em 0 0 !important;
+}
+article > h1 {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ccc;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 0;
+    color: #0b6ba8;
+    font-family: roboto_light,Arial,sans-serif;
+    font-size: 1.6em;
+    margin: 0 0 1em;
+    padding: 0.3em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/*********************************************************
+ * Texte de présentation du simulateur(sous le titre)   *
+ *********************************************************/
+article > p:not(:last-child) {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+article > p:nth-last-child(5) {
+	margin-bottom: 1.25em;
+}
+article p a[target=_blank]:after {
+	content: "\e60c";
+    font-family: "fonticon";
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-transform: none;
+	text-decoration: none;
+}
+article > ul {
+	list-style: initial !important;
+	margin-left: 1.5em;
+}
+article > ul ul {
+	list-style: circle !important;
+}
+
+/***************************************************************
+ * Fil d'ariane du déroulement des Ã©tapes :                  *
+ ***************************************************************/
+.simulator-breadcrumb {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: 0;
+}
+.simulator-breadcrumb ol {
+	display: table;
+	padding: 0;
+	width: 100%;
+}
+.simulator-breadcrumb li p {
+	position: relative;
+	display: block;
+	margin: 0 10px 0 0;
+	padding: 0px 0px 15px 35px;
+	height: 50px;
+	text-decoration: none;
+	color: #000;
+	background: #ececec;
+}
+.simulator-breadcrumb li p:first-child {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.simulator-breadcrumb li p:last-child {
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.simulator-breadcrumb li {
+	display: table-cell;
+}
+.simulator-breadcrumb li:first-child p:before {
+	display: none;
+}
+.simulator-breadcrumb li:last-child p {
+	margin: 0;
+}
+.simulator-breadcrumb li:last-child p:after {
+	height: 100%;
+	border: 0;
+	background: #0b6ba8;
+}
+.simulator-breadcrumb li.current.current p {
+	color: #fff;
+	background: #0b6ba8;
+}
+.simulator-breadcrumb li.current:last-child p:after {
+	background: #fff;
+}
+.simulator-breadcrumb li p:after {
+	position: absolute;
+	content: '';
+	top: 0;
+	right: -24px;
+	border-top: 25px solid transparent;
+	border-bottom: 25px solid transparent;
+	border-left: 25px solid #ececec;
+	z-index: 1;
+}
+.simulator-breadcrumb li.current p:after {
+	border-left-color: #0b6ba8;
+}
+.simulator-breadcrumb li p:before {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	border-top: 25px solid transparent;
+	border-bottom: 25px solid transparent;
+	border-left: 25px solid #fff;
+}
+.simulator-breadcrumb li p span {
+	display: inline-block;
+	vertical-align: middle;
+}
+.simulator-breadcrumb li p span:first-child {
+	font-size: 2.6em;
+	font-weight: bold;
+}
+@media (max-width: 37em) {
+	.simulator-breadcrumb li:not(.current) p span:nth-child(2) {
+		display: none;
+	}
+	.simulator-breadcrumb li p span:first-child {
+		margin-left: .5em;
+	}
+	.simulator-breadcrumb li p {
+		padding-left: 15px;
+	}
+	.simulator-breadcrumb li:first-child p {
+		text-align: left;
+	}
+}
+
+/*********************************************************
+ * Texte de description de l'étape                       *
+ * en dessous du fil d'ariane                            *
+ *********************************************************/
+.step-page .step-description {
+	margin-bottom: 1.5em;
+}
+.step-page .step-description p {
+	margin: 0 0 .8em 0;
+	padding: 0;
+    border-bottom: 3px solid;
+    color: #0b6ba8;
+    width: 100%;
+}
+.step-page .mention-asterisk {
+	margin: 0 0 1em;
+	padding: 0;
+}
+.step-page .mention-asterisk .asterisk, .step-page label .asterisk {
+	color: #c22222;
+}
+.step-page label .asterisk:nth-child(2) {
+	display: none;
+}
+
+
+
+
+ 
+
+div#foot-note-1{
+       float: none;
+    clear: both;
+    padding: 1em;
+    color: #fff;
+    background: #0b6ba8;
+    border-radius: 5px;
+    border-color: blue;
+    border: 1px solid #0b6ba8;
+	margin: 1px 1px 12px 1px;
+}
+div#foot-note-2, div#foot-note-3{
+   font-weight:normal;
+   margin: 1px 1px 12px 1px;
+}
+
+
+
+.step-page .foot-notes {
+    float: none;
+    clear: both;
+    margin: 1em 0;
+    padding: 1em;
+    color: #0b6ba8;
+    background: #f1f6f9;
+    border-radius: 8px;
+    border-color: blue;
+    border: 1px solid #0b6ba8;
+}
+
+
+.step-page .foot-note {
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center;
+}
+.step-page .foot-note p {
+	margin: 0;
+}
+
+/*********************************************************
+ * Champs des formulaires                                *
+ *********************************************************/
+.step-page .form-group  .input-group {
+	display: inline-table;
+}
+.step-page .form-group[data-type=date]  .input-group {
+	max-width: 5.5em;
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+	width: 5.5em; /* useful only for safari < 5.1 */
+}
+.step-page fieldset,
+.step-page div.fieldset {
+	margin-top: 0;
+	margin-bottom: 1.5em;
+}
+.step-page .input-group fieldset {
+	display: inline-block;
+	margin-bottom: 0;
+}
+.step-page legend,
+.step-page .legend {
+	margin-bottom: 0.8em;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.step-page .fieldset legend, .step-page .fieldset .legend {
+    color: #0b6ba8;
+    margin-bottom: 0.8em;
+}
+.step-page .fieldset-container legend {
+    color: #0b6ba8;
+    margin-bottom: 0.8em;
+}
+.step-page .legend p {
+	margin-bottom: 0;
+}
+
+.step-page input {
+	height: 1.3em;
+}
+.step-page input[type=text],
+.step-page input[type=date],
+.step-page input.date,
+.step-page input[type=number],
+.step-page input[type=money] {
+	box-sizing: border-box;
+	margin-top: 0;
+	margin-right: 0.5em;
+	padding-left: 0.2em;
+	height: auto;
+	line-height: 2em;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #fff;
+}
+.step-page .form-group[data-type=date] .input-group.has-error,
+.step-page .form-group:not([data-type=date]) input.has-error {
+	font-weight: normal;
+	border: 1px solid #c60000 !important;
+	background-color: #f5dedb !important;
+}
+.step-page .form-group[data-type=date] .input-group.has-error * {
+	background-color: #f5dedb !important;
+}
+.step-page input[type=money] {
+	width: 8em;
+	max-width: 8em;
+	font-size: 1em;
+}
+.step-page input.date {
+	border: medium none;
+	width: 6.2em;
+	max-width: 6.2em !important;
+}
+.step-page input[type=date] {
+	width: 10em;
+	max-width: 10em !important;
+}
+.step-page a.datepicker-button.blue {
+    background-color: #fff;
+    color: #0b6ba8;
+	border: none;
+}
+.step-page input[type=text] {
+	max-width: 10em;
+}
+.step-page input[type=number] {
+	max-width: 3.5em;
+	/* padding:.5em .1em .5em .4em; */
+	/* pb IE, OPERA, Safari et Chrome si padding*/
+}
+.step-page input[type=submit],
+.step-page input[type=reset] {
+	height: auto;
+}
+.step-page input[disabled=disabled] {
+	border: 0;
+}
+.step-page .listbox {
+	width: 90%;
+}
+.step-page .modal-body .listbox {
+    width: 90%;
+}
+.step-page a[data-toggle=modal] {
+	cursor: pointer;
+}
+.step-page .choice input[type=radio] {
+	margin: 0 0.4em 0 0;
+	display: inline-block;
+	vertical-align: bottom;
+}
+.step-page .field-container .input-group + .unit {
+	margin-top: -1.7em;
+	padding: 0;
+	display: inline-block;
+	vertical-align: middle;
+}
+.step-page .output {
+	display: inline-block;
+	padding: 0 0.1em;
+	vertical-align: baseline;
+}
+.step-page label,
+.step-page .label,
+.step-page input {
+	display: inline-block;
+	float: left;
+}
+.step-page label,
+.step-page .label {
+	width: 100%;
+	font-size: 1em;
+	font-weight: bold;
+	color: #000;
+	text-align: left;
+	white-space:  normal;
+}
+.step-page label.choice {
+	margin-top: 0.6em;
+	margin-right: 1.2em;
+	padding: 0;
+	width: auto;
+	min-width: 1em;
+	font-weight: normal;
+	text-align: left;
+}
+.step-page .form-group.underlabel[data-expanded=true]  .input-group  label.choice {
+    margin-top: 0;
+}
+.step-page label:not(.choice),
+.step-page .label {
+	padding-right: 10px;
+	text-align: left;
+}
+.step-page .form-group:not(.underlabel) label:not(.choice),
+.step-page .label {
+	width: 60% !important;
+}
+.step-page .form-group[data-type=choice]:not([data-expanded=true])  .input-group,
+.step-page .form-group[data-type=department]  .input-group {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  width: 100%;
+}
+.step-page .form-group[data-type=choice]  .input-group > div,
+.step-page .form-group[data-type=department]  .input-group > div {
+    border: none;
+}
+.step-page .listbox .input-group,
+.step-page .listbox-edit {
+    border: none;
+    cursor: pointer;
+}
+.step-page .listbox .listbox-edit {
+	color: #000;
+}
+.listbox.default .listbox-item:hover {
+    background-color: #0b6ba8;
+	color: #fff;
+}
+.step-page .form-group[data-type=choice] a.listbox-button,
+.step-page .form-group[data-type=department] a.listbox-button {
+    background-color: #fff;
+    border: none;
+    color: #0b6ba8;
+    cursor: pointer;
+}
+.step-page .form-group[data-type=choice] a.listbox-button span,
+.step-page .form-group[data-type=department] a.listbox-button span {
+    border: 1px solid;
+    border-radius: 4px;
+	padding: .4em;
+  float: right;
+}
+.step-page .form-group[data-type=choice] .input-group:hover a.listbox-button span,
+.step-page .form-group[data-type=department] .input-group:hover a.listbox-button span {
+    background-color: #0b6ba8;
+    color: #fff;
+    border-radius: 4px;
+      /* width: 100%; */
+  float: right;
+}
+.step-page  ul.listbox-items {
+	max-height: 25em; 
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.step-page .form-group[data-type=date] a.datepicker-button span {
+    border: 1px solid;
+    border-radius: 4px;
+	padding: .4em;
+}
+.step-page .form-group[data-type=date] a.datepicker-button:hover span {
+    background-color: #0b6ba8;
+    color: #fff;
+    border-radius: 4px;
+}
+.step-page .post-note {
+	position: relative;
+	clear: both;
+	margin: 0;
+	padding-top: 0;
+	width: 100%;
+	font-size: 0.7em !important;
+}
+.step-page .has-error {
+	font-weight: bold;
+	color: #c22222;
+}
+.step-page div.has-error {
+	clear: both;
+	text-align: center;
+}
+.step-page fieldset div.has-error {
+	text-align: right;
+}
+
+.step-page .emphasized {
+	font-weight: bold;
+	color: #0b6ba8;
+}
+.step-page .explanation {
+	float: right;
+	margin-top: 0.95em;
+	width: 12em;
+	font-weight: bold;
+	color: #0b6ba8;
+}
+.clearer {
+	float: none;
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+.listbox .listbox-item:before {
+	content: "" !important;
+}
+
+/*********************************************************
+ * Bouton aide                                           *
+ *********************************************************/
+.step-page .btn-help {
+	width: 20px;
+	height: 20px;
+	font-size: 1.4em;
+	border: none;
+}
+.step-page .input-group ~ .btn-help {
+	margin: -1.5em 0.5em 0;
+}
+.step-page .listbox ~ .btn-help {
+	margin: -1.5em 0.5em 0;
+}
+.step-page .form-group[data-type=boolean] .input-group ~ .btn-help {
+	margin: -.5em 0.5em 0;
+}
+body.iOS .step-page .form-group[data-type=date] .input-group  ~ button.btn-help {
+	margin: -1.5em 0.5em 0 3em;
+}
+.step-page .output ~ .btn-help {
+	margin: -0.5em 0.5em 0;
+}
+.step-page .help-panel {
+	clear: both;
+}
+.step-page .help-panel:before, .step-page .help-panel:after {
+	display: none;
+}
+
+
+@media(max-width:579px){
+.step-page .input-group ~ .btn-help {
+	margin: -1.5em 0em 0em 0.2em;
+}
+.step-page .listbox ~ .btn-help {
+	margin: -1.5em 0em 0em 0.2em;
+	
+}
+}
+
+
+/*********************************************************
+ * Money and percent symbol                                          *
+ *********************************************************/
+.step-page .input-group + span.money-symbol {
+	display: inline-block;
+	margin-top: -1.7em;
+	padding: 0;
+	vertical-align: middle;
+}
+.step-page .input-group + span.percent-symbol {
+	display: inline-block;
+	margin-top: -1.7em;
+	padding: 0;
+	vertical-align: middle;
+}
+.step-page .field-container[data-type=percent] input {
+	max-width: 3.5em;
+}
+.step-page .output span.money-symbol {
+	margin-top: 0;
+}
+
+/*********************************************************
+ * Panneau d'aide déroulant sous chaque champ            *
+ *********************************************************/
+.help-panel p {
+	margin-bottom: 0.5em;
+	width: 534px;
+	width: 100%;
+	font-size: 0.9em !important;
+	line-height: 1em;
+}
+.help-panel {
+	margin-top: 0.7em;
+	padding: 0.4em;
+	border: 1px solid #0b6ba8;
+	border-radius: 4px;
+	background: whitesmoke;
+}
+.help-panel dt {
+	display: none;
+}
+.article .help-panel dd {
+	font-style: normal;
+}
+.help-panel dd ul {
+	list-style: initial !important;
+	margin-left: 1.5em;
+}
+.help-panel dd ul ul {
+	list-style-type: circle !important;
+	font-size: 0.9em;
+}
+
+.help-panel ul {
+	list-style-type: disc;
+	font-size: 0.9em;
+	margin-left: 2.5em;
+	line-height: 1em;
+}
+/*********************************************************
+ * Boutons d'action et de navigation dans le simulateur  *
+ *********************************************************/
+.step-page .action_buttons {
+	margin: 1em 0 0;
+	text-align: center;
+}
+.step-page .action_buttons button {
+	display: inline-block;
+	margin: 0 0 1em 0;
+	font-size: 1.2em;
+}
+.step-page .action_buttons button span{
+	font-size: .9em;
+}
+.step-page .action_buttons button[name=precedent] {
+	margin: 0 0 1em 0;
+	float: left;
+}
+.step-page .action_buttons button[name=effacer] {
+	float: left;
+}
+.step-page .action_buttons button[name=commencer] {
+	float: right;
+}
+.step-page .action_buttons button[name=calculer] {
+	float: right;
+}
+.step-page .action_buttons button[name=imprimer] {
+	float: right;
+}
+
+/*********************************************************
+ * Grid                                                  *
+ *********************************************************/
+.step-page div.grid {
+	display: table;
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.step-page  table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.step-page  #calcul-grid-2 {
+	border-collapse: separate;
+}
+.grid-header {
+	color: #fff;
+    background-color: #0b6ba8;
+}
+.step-page div.grid .grid-header > div {
+	border-right-color: #fff;
+	border-left-color: #fff;
+}
+.step-page div.grid > div {
+	display: table-row;
+}
+.step-page div.grid > div:nth-child(2n) {
+	background: #fff;
+}
+.step-page tbody tr:nth-child(4n  + 3), .step-page tbody tr:nth-child(4n  + 4) {
+	background: #ececec;
+}
+.step-page div.grid > div > div {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #cccccc;
+}
+.step-page th, .step-page td {
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #cccccc;
+}
+.step-page .grid-header th:first-child {
+	border-right: 1px solid #fff;
+	border-top-left-radius: 8px;
+}
+.step-page .grid-header th:not(:first-child):not(:last-child) {
+	border-left: none;
+	border-right: 1px solid #fff;
+}
+.step-page .grid-header th:last-child {
+	border-left: none;
+	border-top-right-radius: 8px;
+}
+.step-page .grid:not(.datepicker-calendar) tbody  th, .step-page .grid:not(.datepicker-calendar) tbody  td {
+	border-top: none;
+}
+.step-page .grid:not(.datepicker-calendar) tbody  th {
+	border-right: 1px solid #cccccc;
+}
+.step-page .grid:not(.datepicker-calendar) tbody td:not(:last-child) {
+	border-left: none;
+	border-right: 1px solid #cccccc;
+}
+.step-page .grid:not(.datepicker-calendar) tbody td:last-child {
+	border-left: none;
+}
+.step-page div.grid .row-group-error {
+	display: table-row;
+}
+.step-page div.grid .row-group-error div:nth-child(2) {
+	width: 0;
+}
+.step-page .listbox {
+	text-align: left;
+}
+.step-page .field-container[data-type=month] .listbox-edit {
+	min-width: 5em;
+}
+.step-page .field-container[data-type=year] .listbox-edit {
+	min-width: 2.5em;
+}
+.step-page div.grid > div:first-child div:not(:first-child) {
+	font-weight: bold;
+	text-align: center;
+}
+.step-page div.grid > div:first-child div:nth-child(2) {
+	width: 110px;
+}
+.step-page div.grid > div:first-child div:nth-child(3) {
+	margin-right: 50px;
+	width: 72px;
+}
+.step-page div.grid > div:first-child div:nth-child(4) {
+	width: 50px;
+}
+.step-page div.grid > div:first-child div:nth-child(5),
+.step-page div.grid > div:first-child div:nth-child(6) {
+	width: 60px;
+}
+.step-page div.grid > div:not(:first-child) div {
+	font-weight: normal;
+}
+.step-page div.grid > div:not(:first-child) div > span.output {
+	padding-bottom: 9px;
+}
+.step-page div.grid > div:not(:first-child) div:nth-child(5),
+.step-page div.grid > div:not(:first-child) div:nth-child(6) {
+	padding-bottom: 2px;
+	padding-left: 8px;
+}
+.espace-pro .grid-header th,
+.espace-pro .step-page .foot-notes,
+.espace-pro .simulator-breadcrumb li.current.current p,
+.espace-pro .simulator-breadcrumb li:last-child p:after {
+	background: #a63950;
+}
+.espace-pro .simulator-breadcrumb li.current p:after {
+	border-left-color: #a63950;
+}
+.espace-pro .step-page input[type=text],
+.espace-pro .step-page input[type=date],
+.espace-pro .step-page input.date,
+.espace-pro .step-page input[type=number],
+.espace-pro .step-page input[type=money],
+.espace-pro .step-page select,
+.espace-pro .step-page .emphasized,
+.espace-pro .step-page .explanation {
+	color: #000;
+}
+.espace-asso .grid-header,
+.espace-asso .step-page .foot-notes,
+.espace-asso .simulator-breadcrumb li.current.current p,
+.espace-asso .simulator-breadcrumb li:last-child p:after {
+	background: #0D803B;
+}
+.espace-asso .simulator-breadcrumb li.current p:after {
+	border-left-color: #0D803B;
+}
+.espace-asso .step-page input[type=text],
+.espace-asso .step-page input[type=date],
+.espace-asso .step-page input.date,
+.espace-asso .step-page input[type=number],
+.espace-asso .step-page input[type=money],
+.espace-asso .step-page select,
+.espace-asso .step-page .emphasized,
+.espace-asso .step-page .explanation {
+	color: #0D803B;
+}
+.espace-annuaire .grid-header,
+.espace-annuaire .step-page .foot-notes,
+.espace-annuaire .simulator-breadcrumb li.current.current p,
+.espace-annuaire .simulator-breadcrumb li:last-child p:after {
+	background: #586d84;
+}
+.espace-annuaire .simulator-breadcrumb li.current p:after {
+	border-left-color: #586d84;
+}
+.espace-annuaire .step-page input[type=text],
+.espace-annuaire .step-page input[type=date],
+.espace-annuaire .step-page input.date,
+.espace-annuaire .step-page input[type=number],
+.espace-annuaire .step-page input[type=money],
+.espace-annuaire .step-page select,
+.espace-annuaire .step-page .emphasized,
+.espace-annuaire .step-page .explanation {
+	color: #586d84;
+}
+@media (min-width: 37em) {
+	.step-page label,
+	.step-page .label {
+		padding-right: 10px;
+		text-align: right;
+	}
+	#step4 #franceOuImport {
+		margin-left: 45%;
+	}
+}
+.nav-top .container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+@media only screen and (max-width: 41.13em) {
+	/* Force table to not be like tables anymore */
+	.step-page table.grid, .step-page table.grid thead, .step-page table.grid tbody, .step-page table.grid tr, .step-page table.grid th, .step-page table.grid td { 
+		display: block; 
+	}
+	.step-page div.grid , .step-page div.grid .grid-header, .step-page div.grid > div > div, .step-page div.grid > div { 
+		display: block; 
+	}
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.step-page div.grid .grid-header { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	.step-page table.grid thead  tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	.step-page div.grid > div { border: 1px solid #ccc; }
+	.step-page table.grid tr { border: 1px solid #ccc; }
+	.step-page div.grid > div > div, .step-page table.grid td  { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+		padding-right: 10px; 
+		text-align: right;
+	}
+	.step-page table.grid tr:nth-child(2n ) td  { 
+		padding-left: 0; 
+	}
+	.step-page table.grid tr:nth-child(2n ) td  .has-error { 
+		text-align: left;
+	}
+	.step-page div.grid > div > div  .output, .step-page table.grid td .output {
+		padding-top: 5px;
+	}
+	.step-page div.grid > div > div:before, .step-page table.grid tr:nth-child(2n + 1) td:before  { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	.step-page div.grid > div > div:nth-of-type(1), .step-page table.grid th {
+		font-weight: bold;
+		text-align: center;
+		padding: 0;
+		background-color: #0b6ba8;
+		color: #FFF;
+	}
+	/*
+	Label the data
+	*/
+	.step-page div.grid > div > div:nth-of-type(2):before { content: attr(data-label); }
+	.step-page div.grid > div > div:nth-of-type(3):before { content: attr(data-label); }
+	.step-page div.grid > div > div:nth-of-type(4):before { content: attr(data-label); }
+	.step-page div.grid > div > div:nth-of-type(5):before { content: attr(data-label); }
+	.step-page div.grid > div > div:nth-of-type(6):before { content: attr(data-label); }
+	.step-page div.grid > div > div:nth-of-type(7):before { content: attr(data-label); }
+	.step-page div.grid > div > div:nth-of-type(8):before { content: attr(data-label); }
+	.step-page table.grid tr:nth-child(2n + 1) td:nth-of-type(1):before { content: attr(data-label); }
+	.step-page table.grid tr:nth-child(2n + 1) td:nth-of-type(2):before { content: attr(data-label); }
+	.step-page table.grid tr:nth-child(2n + 1) td:nth-of-type(3):before { content: attr(data-label); }
+	.step-page table.grid tr:nth-child(2n + 1) td:nth-of-type(4):before { content: attr(data-label); }
+	.step-page table.grid tr:nth-child(2n + 1) td:nth-of-type(5):before { content: attr(data-label); }
+	.step-page table.grid tr:nth-child(2n + 1) td:nth-of-type(6):before { content: attr(data-label); }
+	.step-page table.grid tr:nth-child(2n + 1) td:nth-of-type(7):before { content: attr(data-label); }
+}
+
+/* spécifique */
+.simulator-breadcrumb {
+	display: none;
+}
+.step-page .step-description {
+	display: none;
+}
+#step4 p.mention-asterisk{
+	display: none;
+}
+#donnees-fieldset-4 {
+    margin-top: -1.5em;
+}
+
+/* on désactive l'accès au pop-in */
+#donnees-panel-1-fieldset-4 a {
+	display: none;
+}
+
+#step4.form-group:not(.underlabel) label:not(.choice),
+#step4 .label {
+	width: 45% !important;
+}
+
+.step-page .blank {
+	display: none;
+}
+
+/* fix bootstrap.css and styles.css coexistence */
+.nav-top .container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+@media(min-width:20em){
+	.search h1{
+		font-size:1.14286em
+	}
+	.search .input-group{
+		margin:0;
+		font-size:60%
+	}
+}
+@media(min-width:25em){
+	.search h1{
+		font-size:1.42857em
+	}
+	.search .input-group{
+		font-size:70%
+	}
+}
+@media(min-width:30em){
+	.search .container{
+		padding:1em
+	}
+	.search h1{
+		font-size:1.57143em
+	}
+	.search .input-group{
+		font-size:80%
+	}
+}
+@media(min-width:37em){
+	.search .container{
+		padding:1em
+	}
+	.search h1{
+		font-size:1.71429em
+	}
+	.search h1 br{
+		display:none
+	}
+	.search .input-group{
+		margin:0 35px
+	}
+}
+@media(min-width:48em){
+	.search h1{
+		font-size:1.71429em
+	}
+	.search .input-group{
+		margin:0 50px;
+		font-size:100% !important;
+	}
+	.search .container{
+		padding:2em 1em
+	}
+}
+@media(min-width:60em){
+	.search h1{
+		font-size:2em
+	}
+	.search .input-group{
+		margin:0 150px
+	}
+	.search .container{
+		padding:2em 1em
+	}
+}
+
+
+.input-group {
+     width: auto;
+}
+
+.search.search .input-group {
+    width: 100%;
+}

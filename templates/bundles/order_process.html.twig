@@ -1,0 +1,265 @@
+<div class="form-widget">
+    {% set process = field.value %}
+    <p>
+        <span class="text-primary">
+            Démarche :<br>
+        </span>
+        {{ process.processType }}
+    </p>
+    {% if process.purchasePlace is not null %}
+        <p>
+            <span class="text-primary">
+                Lieu d'achat :<br>
+            </span>
+            {{ process.purchasePlace }}
+        </p>
+    {% endif %}
+    {% if process.fourthChangeHome is not null %}
+        <p>
+            <span class="text-primary">
+                Quatrième changement de domicile :<br>
+            </span>
+            {{ process.fourthChangeHome }}
+        </p>
+    {% endif %}
+    {% if process.vehicleModification is not null %}
+        <p>
+            <span class="text-primary">
+                Modification du véhicule :<br>
+            </span>
+            {{ process.vehicleModification }}
+        </p>
+    {% endif %}
+    {% if process.vehicleType is not null %}
+        <p>
+            <span class="text-primary">
+                Type de véhicule :<br>
+            </span>
+            {{ process.vehicleType }}
+        </p>
+    {% endif %}
+    {% if process.circulationDate is not null %}
+        <p>
+            <span class="text-primary">
+                Date de mise en circulation :<br>
+            </span>
+            {{ process.circulationDate }}
+        </p>
+    {% endif %}
+    {% if process.disability is not null %}
+        <p>
+            <span class="text-primary">
+                Invalidité :<br>
+            </span>
+            {{ process.disability }}
+        </p>
+    {% endif %}
+    {% if process.registrationType is not null %}
+        <p>
+            <span class="text-primary">
+                Type d'immatriculation :<br>
+            </span>
+            {{ process.registrationType }}
+        </p>
+    {% endif %}
+    {% if process.demonstrationVehicle is not null %}
+        <p>
+            <span class="text-primary">
+                Véhicule de démonstration :<br>
+            </span>
+            {{ process.demonstrationVehicle }}
+        </p>
+    {% endif %}
+    {% if process.administrativePower is not null %}
+        <p>
+            <span class="text-primary">
+                Puissance administrative :<br>
+            </span>
+            {{ process.administrativePower }} CV
+        </p>
+    {% endif %}
+    {% if process.collectionVehicle is not null %}
+        <p>
+            <span class="text-primary">
+                Véhicule de collection :<br>
+            </span>
+            {{ process.collectionVehicle }}
+        </p>
+    {% endif %}
+    {% if process.energy is not null %}
+        <p>
+            <span class="text-primary">
+                Énergie :<br>
+            </span>
+            {{ process.energy }}
+        </p>
+    {% endif %}
+    {% if process.co2Rate is not null %}
+        <p>
+            <span class="text-primary">
+                Taux CO2 :<br>
+            </span>
+            {{ process.co2Rate }}
+        </p>
+    {% endif %}
+    {% if process.department is not null %}
+        <p>
+            <span class="text-primary">
+                Département :<br>
+            </span>
+            {{ process.department }}
+        </p>
+    {% endif %}
+    {% if process.y1TaxBeforeReduction is not null %}
+        <p>
+            <span class="text-primary">
+                Y1 - Taxe régionale avant réduction :<br>
+            </span>
+            {{ process.y1TaxBeforeReduction }} €
+        </p>
+    {% endif %}
+    {% if process.y1Tax is not null %}
+        <p>
+            <span class="text-primary">
+                Y1 - Taxe régionale :<br>
+            </span>
+            {{ process.y1Tax }} €
+        </p>
+    {% endif %}
+    {% if process.y2TransportVehicleSurcharge is not null %}
+        <p>
+            <span class="text-primary">
+                Y2 - Majoration véhicule de transport :<br>
+            </span>
+            {{ process.y2TransportVehicleSurcharge }} €
+        </p>
+    {% endif %}
+    {% if process.y3Co2PenaltyPassengersCars is not null %}
+        <p>
+            <span class="text-primary">
+                Y3 - Malus CO2 voitures de tourisme :<br>
+            </span>
+            {{ process.y3Co2PenaltyPassengersCars }} €
+        </p>
+    {% endif %}
+    {% if process.y4FixedTax is not null %}
+        <p>
+            <span class="text-primary">
+                Y4 - Taxe fixe :<br>
+            </span>
+            {{ process.y4FixedTax }} €
+        </p>
+    {% endif %}
+    {% if process.subtotal is not null %}
+        <p>
+            <span class="text-primary">
+                Sous-total :<br>
+            </span>
+            {{ process.subtotal }} €
+        </p>
+    {% endif %}
+    {% if process.y5RoutingFee is not null %}
+        <p>
+            <span class="text-primary">
+                Y5 - Redevance acheminement :<br>
+            </span>
+            {{ process.y5RoutingFee }} €
+        </p>
+    {% endif %}
+    {% if process.y6TaxesPayable is not null %}
+        <p>
+            <span class="text-primary">
+                Y6 - Taxes à payer :<br>
+            </span>
+            {{ process.y6TaxesPayable }} €
+        </p>
+    {% endif %}
+    {% if process.fiveSeaterVan is not null %}
+        <p>
+            <span class="text-primary">
+                Est une camionnette 5 places :<br>
+            </span>
+            {{ process.fiveSeaterVan }}
+        </p>
+    {% endif %}
+    {% if process.isCodeCarosseriePickUpBE is not null %}
+        <p>
+            <span class="text-primary">
+                Is code carrosserie pick-up BE :<br>
+            </span>
+            {{ process.isCodeCarosseriePickUpBE }}
+        </p>
+    {% endif %}
+    {% if process.isPickUpAffectationRemonteesMecEtDomainesSki is not null %}
+        <p>
+            <span class="text-primary">
+                Is pick-up affectation remontées mécaniques et domaines ski :<br>
+            </span>
+            {{ process.isPickUpAffectationRemonteesMecEtDomainesSki }}
+        </p>
+    {% endif %}
+    {% if process.vanPickUpSubmittedEcotax is not null %}
+        <p>
+            <span class="text-primary">
+                Van ou pick-up soumis à l'écotaxe :<br>
+            </span>
+            {% if process.vanPickUpSubmittedEcotax is same as true %}
+                Oui
+            {% elseif process.vanPickUpSubmittedEcotax is same as false %}
+                Non
+            {% endif %}
+        </p>
+    {% endif %}
+    {% if process.vehicleN1CarryingTravellers is not null %}
+        <p>
+            <span class="text-primary">
+                Véhicule N1 transportant des voyageurs :<br>
+            </span>
+            {{ process.vehicleN1CarryingTravellers }}
+        </p>
+    {% endif %}
+    {% if process.tourismVehicle is not null %}
+        <p>
+            <span class="text-primary">
+                Véhicule de tourisme :<br>
+            </span>
+            {% if process.tourismVehicle is same as true %}
+                Oui
+            {% elseif process.tourismVehicle is same as false %}
+                Non
+            {% endif %}
+        </p>
+    {% endif %}
+    {% if process.administrativePowerE85 is not null %}
+        <p>
+            <span class="text-primary">
+                Puissance administrative retenue pour le malus E85 :<br>
+            </span>
+            {{ process.administrativePowerE85 }}
+        </p>
+    {% endif %}
+    {% if process.totalToPay is not null %}
+        <p>
+            <span class="text-primary">
+                Total à payer :<br>
+            </span>
+            {{ process.totalToPay }} €
+        </p>
+    {% endif %}
+    {% if process.price is not null %}
+        <p>
+            <span class="text-primary">
+                Tarif :<br>
+            </span>
+            {{ process.price }} €
+        </p>
+    {% endif %}
+    {% if process.communityReception is not null %}
+        <p>
+            <span class="text-primary">
+                Réception communautaire :<br>
+            </span>
+            {{ process.communityReception }}
+        </p>
+    {% endif %}
+</div>

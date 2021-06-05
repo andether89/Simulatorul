@@ -1,0 +1,31 @@
+{# CollectionType #}
+{% block collection_row %}
+    <div class="">
+        <label for="{{ form.vars.id }}"
+               class="{{ form.vars.required ? 'required' }}">
+            {% if form.vars.label is not null %}
+                {{ form.vars.label }}
+            {% else %}
+                {{ form.vars.name }}
+            {% endif %}
+        </label>
+        <div class="">
+            <div class="{{ form.vars.name }}"
+                 data-prototype="{{ form_row(form.vars.prototype)|e('html_attr') }}"
+                 data-widget-counter="{{ form.children|length }}">
+                {% for fields in form.children %}
+                    <div class="">
+                        {{ form_row(fields) }}
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="button" class="add-item-link" data-collection-holder-class=".{{ form.vars.name }}">Ajouter un co-propriétaire</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block collection_entry_row %}
+    {% for children in form.children %}
+        {{ form_row(children) }}
+    {% endfor %}
+{% endblock %}

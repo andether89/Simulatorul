@@ -1,0 +1,16 @@
+<div class="form-widget">
+    {% set getFirst = field.property|replace({'File': 'Name'})|split('', 1) %}
+    {% set get = [] %}
+    {% set get = get|merge({0: 'get'}) %}
+    {% set get = get|merge({1: getFirst[0]|capitalize}) %}
+    {% for letter in getFirst|slice(1) %}
+        {% set get = get|merge([letter]) %}
+    {% endfor %}
+    {% set get = get|join %}
+    {% set name = _call(ea.entity.instance, get) %}
+    {% if name is not empty and name is not null %}
+        <a href="{{ vich_uploader_asset(ea.entity.instance, field.property) }}" target="_blank">Télécharger</a>
+    {% else %}
+        Pas de fichier uploadé
+    {% endif %}
+</div>

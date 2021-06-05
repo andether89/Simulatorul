@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Mes commandes' %}
+
+{% block body %}
+    <h1>Mes commandes</h1>
+    <ul>
+        {% for order in app.user.orders %}
+            <li><a href="{{ path('account_order_show', {id: order.id}) }}">{{ order.number }}</a> {{ constant('App\\Entity\\Order::STATE')[order.state] }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

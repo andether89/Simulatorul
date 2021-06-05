@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Récapitulatif de votre démarche' %}
+
+{% block javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block body %}
+    <h2>Récapitulatif de votre démarche</h2>
+    <h6>Votre démarche concerne</h6>
+    <p>{{ order.process.processType }}</p>
+    <div class="checkout-form">
+        <div class="priority">
+            <input type="checkbox" id="priority" name="priority">
+            <label for="priority">
+                Traitement en priorité <span>Option</span> 9,99 €
+            </label>
+        </div>
+
+        <div class="sms">
+            <input type="checkbox" id="sms" name="sms">
+            <label for="sms">
+                Notification par sms <span>Option</span> 1 €
+            </label>
+        </div>
+
+        <div class="terms-and-conditions">
+            <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions">
+            <label for="terms-and-conditions">
+                J'accepte les conditions générales et souhaite que ma commande débute immédiatement.
+                Afin d'accélérer le traitement, je renonce expressément à mon droit de rétractation avant
+                la fin du délai légal de 14 jours.
+            </label>
+        </div>
+
+        <button id="checkout-button" data-token="{{ csrf_token('pay-order') }}">Payer <span class="total-price">{{ order.total|number_format(2) }}</span> €</button>
+    </div>
+
+    <script type="text/javascript">
+        // Create an instance of the Stripe object with your publishable API key
+        var stripe = Stripe('{{ app.request.server.get('STRIPE_CLIENT') }}');
+        var checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function() {
+            // We send the data to the back to know if he wants options and if he checked the conditions
+            let token = checkoutButton.getAttribute('data-token');
+            let priority = document.getElementById('priority').checked;
+            let termsAndConditions = document.getElementById('terms-and-conditions').checked;
+            let sms = document.getElementById('sms').checked;
+            // Create a new Checkout Session using the server-side endpoint you
+            // created in step 3.
+            fetch('{{ path('checkout_pay') }}', {
+                method: 'POST',
+                body: JSON.stringify([
+                    token,
+                    priority,
+                    termsAndConditions,
+                    sms
+                ])
+            })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(session) {
+                    return stripe.redirectToCheckout({ sessionId: session.id });
+                })
+                .then(function(result) {
+                    // If `redirectToCheckout` fails due to a browser or network
+                    // error, you should display the localized error message to your
+                    // customer using `error.message`.
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+{% endblock %}
